@@ -37,7 +37,7 @@ tracks.df$artist  = tracks.artist.names
 tracks.df$track.id = sapply(1:200,function(n){
   tracks.content[n,10]
 })
-
+tracks.df$track.id <- unlist(tracks.df$track.id)
 #--------------------------------------------------------
 
 
@@ -73,6 +73,6 @@ related.artists.ids = sapply(1:200, function(n) {
 related.artists.ids = t(related.artists.ids)
 related.artists.ids = as.data.frame(related.artists.ids)
 
-# TODO: DO ANALYSIS ON THE RELATED ARTISTS OF EACH OF THE TOP 200 ARTISTS
+# TODO: DO ANALYSIS ON THE RELATED ARTISTS OF EACH OF THE TOP 200 ARTISTS (unknown-artist-probability)
 
 #--------------------------------------------------------

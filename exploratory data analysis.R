@@ -6,7 +6,7 @@ library(rvest)
 library(ggplot2)
 # //////////////////
 clientID = ""
-secret = ""
+secret = "f352748fea384cb884a5ed7a0b591f9f"
 
 
 response = POST(
@@ -67,6 +67,10 @@ tracks.artist.names = sapply(1:200,function(n){
 tracks.song =sapply(1:200, function(n){
   tracks.content[[n]]$name
 })
+
+tracks.df = cbind(rating = 1:200, name = tracks.song)
+tracks.df = tracks.df %>% as.data.frame
+
 tracks.df$name = sapply(1:200,function(n){
   tracks.content[n,11]
 })
@@ -82,8 +86,7 @@ tracks.df$artist  = tracks.artist.names
 tracks.df$id = sapply(1:200,function(n){
   tracks.content[n,10]
 })
-# tracks.df = cbind(rating = 1:200, name = tracks.names)
-# tracks.df = tracks.df %>% as.data.frame
+tracks.df$track.id <- unlist(tracks.df$track.id)
 
 #--------------------------------------------------------
 
@@ -159,6 +162,8 @@ for (i in 1:ncol(features.df)) {
 features.df$id = sapply(1:200,function(n){
   features.content[n,13]
 })
+features.df$id <- unlist(features.df$id)
+
 
 #Merge features and track info
 master.df = cbind(tracks.df,features.df[,-c(1,15)])
