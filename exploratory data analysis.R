@@ -5,8 +5,8 @@ library(magrittr)
 library(rvest)
 library(ggplot2)
 # //////////////////
-clientID = ""
-secret = ""
+clientID = "8f1412ef04b24436a876ecf36ea5f76c"
+secret = "5caa0d13b2ea4771bcbb5a9fdccb4bc0"
 
 
 response = POST(
@@ -96,11 +96,7 @@ tracks.artist.ids = lapply(1:200, function(n) {
 })
 tracks.artist.ids = unlist(tracks.artist.ids)
 
-related.artists = lapply(1:200, function(n) {
-  GET(url = sprintf("https://api.spotify.com/v1/artists/%s/related-artists",
-                    tracks.artist.ids[n]),
-                    config = add_headers(authorization = authorization.header))
-})
+
 related.artists.content = sapply(1:200, function(n) {
   content(related.artists[[n]])
 })

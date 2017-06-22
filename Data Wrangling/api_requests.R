@@ -93,3 +93,20 @@ tracks.dti.300.q2 = lapply(dti.201_300.q2, function(ids) {
   GET(url = paste0("https://api.spotify.com/v1/tracks/?ids=", ids),
       config = add_headers(authorization = authorization.header))
 })
+
+# ========================================================
+# Tracks and Artists and Related Artists
+
+
+tracks = lapply(1:200, function(n) {
+  GET(url = paste("https://api.spotify.com/v1/tracks/", top.song.ids[n], sep = ""),
+      config = add_headers(authorization = authorization.header))
+})
+
+related.artists = lapply(1:200, function(n) {
+  GET(url = sprintf("https://api.spotify.com/v1/artists/%s/related-artists",
+                    tracks.artist.ids[n]),
+      config = add_headers(authorization = authorization.header))
+})
+
+
