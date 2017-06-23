@@ -5,8 +5,8 @@ library(magrittr)
 library(rvest)
 library(ggplot2)
 # //////////////////
-clientID = ""
-secret = "f352748fea384cb884a5ed7a0b591f9f"
+clientID = "8f1412ef04b24436a876ecf36ea5f76c"
+secret = "dcc2e20913af4c72bcc8c1acc57b38c2"
 
 
 response = POST(
